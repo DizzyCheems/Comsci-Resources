@@ -1,0 +1,69 @@
+import java.util.*;
+
+public class Iterative2DMatrixtoLinkedList {
+	static class Node {
+		int data; 
+		Node left;
+		Node right;
+		Node up;
+		Node down;
+		
+		Node(int x)
+		{
+			data = x;
+			left = null;
+			right = null;
+			up = null;
+			down = null;
+		}
+	}
+	public static void display(Node head)
+	{
+		Node downptr = head;
+		Node rightptr;
+		while (downptr != null) {
+			rightptr = downptr;
+			while (rightptr != null) {
+				System.out.print(rightptr.data + " ");
+				rightptr = rightptr.right;
+			}
+			System.out.println();
+			downptr = downptr.down;
+		}
+	}
+	public static void main(String[] args)
+	{
+		int[][] mat = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		int n = 3, m = 3;
+		Node head_main = null;
+		Node prev, upper = new Node(-1);
+							
+		for (int i = 0; i < n; i++) {
+			Node head_row = new Node(-1); 
+			prev = new Node(-1); 
+			for (int j = 0; j < m; j++) {
+				Node temp = new Node(mat[i][j]);
+				if (j == 0)
+					head_row = temp;
+				if (i == 0 && j == 0)
+					head_main = temp;
+				temp.left = prev;
+				prev.right = temp;
+				if (i == n - 1)
+					temp.down = null;
+
+				if (upper.right == null)
+				upper.right = new Node(-1);
+				upper = upper.right;
+				temp.up = upper;
+				upper.down = temp;
+				prev = temp;
+
+				if (j == m - 1)
+					prev.right = null;
+			}
+			upper = head_row.left;
+		}
+		display(head_main);
+	}
+}

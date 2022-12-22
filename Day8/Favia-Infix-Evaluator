@@ -1,0 +1,96 @@
+import java.util.*;
+
+public class Favia-Infix-Evaluator;
+{
+static boolean isOperand(char x)
+{
+    return (x >= '0' && x <= '9');
+}
+ 
+static boolean isOperator(char x)
+{
+	switch(x)
+	{
+		case '+':
+		case '-':
+		case '*':
+		case '/':
+		case '^':
+		case '%':
+			return true;
+	}
+	return false;
+}
+
+public static String prefixTOInfix(String str)
+{
+	Stack<String> stack = new Stack<>();
+	
+	// Length of expression
+	int l = str.length();
+	
+	// Reading from right to left
+	for(int i = l - 1; i >= 0; i--)
+	{
+		char c = str.charAt(i);
+		if (isOperator(c))
+		{
+			String op1 = stack.pop();
+			String op2 = stack.pop();
+			
+			// Concat the operands and operator
+			String temp = "(" + op1 + c + op2 + ")";
+			stack.push(temp);
+		}
+		else
+		{
+			
+			// To make character to string
+			stack.push(c + "");
+		}
+	}
+	return stack.pop();
+}
+
+static String PostfixTOInfix(String exp)
+{
+    Stack<String> s = new Stack<String>();
+ 
+    for (int i = 0; i < exp.length(); i++)
+    {
+        // Push operands
+        if (isOperand(exp.charAt(i)))
+        {
+        s.push(exp.charAt(i) + "");
+        }
+ 
+        // We assume that input is
+        // a valid postfix and expect
+        // an operator.
+        else
+        {
+            String op1 = s.peek();
+            s.pop();
+            String op2 = s.peek();
+            s.pop();
+            s.push("(" + op2 + exp.charAt(i) +
+                    op1 + ")");
+        }
+    }
+ 
+    // There must be a single element
+    // in stack now which is the required
+    // infix.
+    return s.peek();
+}
+public static void main(String[] args)
+{
+	String prefixinput = "*-2/45-/235";
+    String postfixinput = "32*1+";
+    
+    System.out.println("Prefix Expression:" + prefixinput);
+    System.out.println("Postfix Expression:" + postfixinput);
+	System.out.println("Prefix to Infix : " + prefixTOInfix(prefixinput));
+    System.out.println("Postfix to Infix:" + PostfixTOInfix(postfixinput));
+}
+}
