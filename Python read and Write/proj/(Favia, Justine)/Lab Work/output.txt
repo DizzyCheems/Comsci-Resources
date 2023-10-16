@@ -1,0 +1,26 @@
+---------------------------------------------- 
+Student Name: Justine M. Favia
+Course: Bachelor of Science in Computer Science
+Subjects Enrolled: 
+CSPC 106 - Automata Theory & Formal Languages - 3 units
+CSPC 107 - Organization & Architecture - 3 units
+CSPC 109 - Programming Languages - 5 units
+CSELEC 1 - Computational Science - 5 units
+CSELEC 2 - Graphics & Visual Computing - 5 units
+
+Total Units: 21
+
+---------------------------------------------- 
+---------------------------------------------- 
+Student Name: Juan D. Cruz
+Course: Bachelor of Science in Computer Science
+Subjects Enrolled: 
+CSPC 106 - Automata Theory & Formal Languages - 3 units
+CSPC 107 - Organization & Architecture - 3 units
+CSPC 109 - Programming Languages - 5 units
+CSELEC 1 - Computational Science - 5 units
+CSELEC 2 - Graphics & Visual Computing - 5 units
+
+Total Units: 21
+
+---------------------------------------------- 
